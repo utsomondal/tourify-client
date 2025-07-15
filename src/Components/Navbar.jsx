@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
-// import { getNavLinks } from "../Utils/NavLinkClass";
+import { MdTravelExplore } from "react-icons/md";
 import { renderNavItems } from "./RenderNavItems";
 
 const Navbar = () => {
@@ -48,7 +48,18 @@ const Navbar = () => {
               {renderNavItems("mobile")}
             </ul>
           </div>
-          <a className="text-xl dark:text-red-500">Tourify</a>
+          <Link
+            title="Go to Homepage"
+            to="/"
+            className="text-3xl dark:text-red-500 font-bold flex items-center select-none tracking-wider"
+          >
+            T
+            <MdTravelExplore
+              className="inline align-middle text-[23px] mx-0.5"
+              aria-hidden="true"
+            />
+            urify
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

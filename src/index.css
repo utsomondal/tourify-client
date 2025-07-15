@@ -1,3 +1,54 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @plugin "daisyui";
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+
+  /*For Light mode */
+  /* Primary */
+  --color-lm-primary: #2563eb; /* Trustworthy Blue */
+  --color-lm-primary-hover: #1d4ed8;
+  --color-lm-primary-focus: #1e40af;
+
+  /* Accent */
+  --color-lm-accent: #f59e0b; /* Engaging Amber */
+  --color-lm-accent-hover: #d97706;
+  --color-lm-accent-focus: #b45309;
+
+  /* Success */
+  --color-lm-success: #10b981; /* Calming Green */
+  --color-lm-success-hover: #059669;
+  --color-lm-success-focus: #047857;
+
+  /* Neutral */
+  --color-lm-text-primary: #1f2937;
+  --color-lm-text-secondary: #4b5563;
+  --color-lm-background: #f9fafb;
+  --color-lm-surface: #ffffff;
+  --color-lm-border: #e5e7eb;
+
+  /*For Dark mode */
+  /* Primary */
+  --color-dm-primary: #3b82f6; /* Trustworthy Blue */
+  --color-dm-primary-hover: #60a5fa;
+  --color-dm-primary-focus: #93c5fd;
+
+  /* Accent */
+  --color-dm-accent: #fbbf24; /* Engaging Amber */
+  --color-dm-accent-hover: #fcd34d;
+  --color-dm-accent-focus: #fde68a;
+
+  /* Success */
+  --color-dm-success: #34d399; /* Calming Green */
+  --color-dm-success-hover: #6ee7b7;
+  --color-dm-success-focus: #a7f3d0;
+
+  /* Neutral */
+  --color-dm-text-primary: #f9fafb;
+  --color-dm-text-secondary: #d1d5db;
+  --color-dm-background: #111827;
+  --color-dm-surface: #1f2937;
+  --color-dm-border: #374151;
+}
