@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router";
+// import { getNavLinks } from "../Utils/NavLinkClass";
+import { renderNavItems } from "./RenderNavItems";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setIsDark(true);
-    } else if (savedTheme === "light") {
-      setIsDark(false);
-    } else {
-      setIsDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
-    }
-  }, []);
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") return true;
+    if (saved === "light") return false;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   useEffect(() => {
     document.documentElement.setAttribute(
@@ -21,15 +18,6 @@ const Navbar = () => {
     );
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
-
-  const navLinks = (
-    <>
-      <li>Home</li>
-      <li>All Tourists Spot</li>
-      <li>AddTourists Spot</li>
-      <li>MyList</li>
-    </>
-  );
 
   return (
     <header>
@@ -57,17 +45,23 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              {navLinks}
+              {renderNavItems("mobile")}
             </ul>
           </div>
           <a className="text-xl dark:text-red-500">Tourify</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1">
+            {renderNavItems("desktop")}
+          </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Login</a>
-          <a className="btn">Register</a>
+          <span className="btn">
+            <Link to="/login">Login</Link>
+          </span>
+          <span className="btn">
+            <Link to="/register">Register</Link>
+          </span>
           <div>
             <label className="toggle text-base-content">
               <input
@@ -77,7 +71,6 @@ const Navbar = () => {
                   setIsDark(e.target.checked);
                 }}
                 className="theme-controller"
-                value="synthwave"
               />
 
               <svg
