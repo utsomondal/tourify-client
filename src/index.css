@@ -52,3 +52,10 @@
   --color-dm-surface: #1f2937;
   --color-dm-border: #374151;
 }
+
+.login-btn {
+  @apply btn join-item bg-lm-primary dark:bg-dm-primary hover:bg-lm-primary-hover dark:hover:bg-dm-primary-hover focus:bg-lm-primary-focus dark:focus:bg-dm-primary-focus text-white;
+}
+.register-btn {
+  @apply btn join-item bg-lm-accent dark:bg-dm-accent hover:bg-lm-accent-hover dark:hover:bg-dm-accent-hover focus:bg-dm-accent-focus dark:focus:bg-dm-primary-focus text-black;
+}
