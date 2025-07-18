@@ -4,10 +4,16 @@ import Footer from "../Components/Footer";
 
 const Layout = () => {
   return (
-    <div className="font-poppins bg-lm-background dark:bg-dm-background max-w-7xl mx-auto">
-      <Navbar />
-      <Outlet />
-      <Footer />
+    <div className="font-poppins bg-lm-background dark:bg-dm-background">
+      <div className="container mx-auto">
+        <Navbar />
+      </div>
+      <div className="container mx-auto">
+        <Outlet />
+      </div>
+      <div className="container mx-auto">
+        <Footer />
+      </div>
     </div>
   );
 };

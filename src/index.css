@@ -1,6 +1,9 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @plugin "daisyui";
 
 @theme {
@@ -54,8 +57,8 @@
 }
 
 .login-btn {
-  @apply btn join-item bg-lm-primary dark:bg-dm-primary hover:bg-lm-primary-hover dark:hover:bg-dm-primary-hover focus:bg-lm-primary-focus dark:focus:bg-dm-primary-focus text-white;
+  @apply px-2 py-1 active:scale-95 cursor-pointer transition-all rounded-l-md duration-150 join-item bg-lm-primary dark:bg-dm-primary hover:bg-lm-primary-hover dark:hover:bg-dm-primary-hover focus:bg-lm-primary-focus dark:focus:bg-dm-primary-focus text-white text-sm sm:text-base;
 }
 .register-btn {
-  @apply btn join-item bg-lm-accent dark:bg-dm-accent hover:bg-lm-accent-hover dark:hover:bg-dm-accent-hover focus:bg-dm-accent-focus dark:focus:bg-dm-primary-focus text-black;
+  @apply px-2 py-1 active:scale-95 cursor-pointer transition-all rounded-r-md duration-150 join-item bg-lm-accent dark:bg-dm-accent hover:bg-lm-accent-hover dark:hover:bg-dm-accent-hover focus:bg-dm-accent-focus dark:focus:bg-dm-primary-focus text-black text-sm sm:text-base;
 }
