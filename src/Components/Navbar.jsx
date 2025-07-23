@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 import { renderNavItems } from "./RenderNavItems";
-import { MdOutlineLightMode } from "react-icons/md";
-import { MdOutlineDarkMode } from "react-icons/md";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { RiMenuLine } from "react-icons/ri";
 import Logo from "./Logo";
 import Drawer from "./Drawer";
+import JoinButton from "./JoinButton";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(() => {
@@ -24,8 +23,8 @@ const Navbar = () => {
   }, [isDark]);
 
   return (
-    <header>
-      <div className="navbar bg-transparent sticky top-0 backdrop:blur-sm shadow-sm">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-lm-background/50 dark:bg-dm-background/50 border-b border-b-lm-border dark:border-b-dm-border container mx-auto">
+      <div className="navbar">
         <div className="navbar-start">
           {/* drawer */}
           <label htmlFor="my-drawer" className="btn btn-ghost lg:hidden p-1">
@@ -39,16 +38,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-1">
-          <div className="join">
-            <span className="login-btn">
-              <Link to="/login">Login</Link>
-            </span>
-            <span className="register-btn">
-              <Link to="/register">Register</Link>
-            </span>
-          </div>
+          <JoinButton />
           {/* Theme Controller */}
-          <div>
+          <div className="pl-2">
             <label className="toggle text-lm-text-primary dark:text-dm-text-primary">
               <input
                 type="checkbox"

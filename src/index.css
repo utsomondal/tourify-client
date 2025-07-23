@@ -62,3 +62,6 @@
 .register-btn {
   @apply px-2 py-1 active:scale-95 cursor-pointer transition-all rounded-r-md duration-150 join-item bg-lm-accent dark:bg-dm-accent hover:bg-lm-accent-hover dark:hover:bg-dm-accent-hover focus:bg-dm-accent-focus dark:focus:bg-dm-primary-focus text-black text-sm sm:text-base;
 }
+.social-login-btn {
+  @apply flex-1 flex items-center justify-center gap-2 rounded-md py-2 cursor-pointer border border-gray-400 dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary bg-transparent transition-all hover:bg-gray-200 hover:border-gray-500 hover:shadow-md dark:hover:bg-dm-surface dark:hover:border-dm-primary-hover dark:hover:shadow-lg;
+}
