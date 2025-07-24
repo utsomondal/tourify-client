@@ -1,190 +1,51 @@
-import Logo from "./Logo";
+import footerNavItems from "../Constants/FooterNavItems";
+import NewsLetter from "./NewsLetter";
 
 const Footer = () => {
   return (
-    <>
-      <footer className="footer sm:footer-horizontal bg-lm-background dark:bg-dm-background text-lm-text-primary dark:text-dm-text-primary p-10 border-t border-t-lm-border dark:border-t-dm-border">
-        <aside className="max-w-xs">
-          <Logo />
-          <p className="mt-4 text-sm text-lm-text-secondary dark:text-dm-text-secondary">
-            Tourify is your trusted travel companion, helping you discover
-            hidden gems, plan personalized adventures, and connect with a global
-            community of explorers.
-          </p>
-          <p className="mt-4 text-xs text-lm-text-secondary dark:text-dm-text-secondary">
-            &copy; {new Date().getFullYear()} Tourify. All rights reserved.
-          </p>
-        </aside>
-
-        <nav>
-          <h6 className="footer-title mb-2 text-lm-text-primary dark:text-dm-text-primary">
-            Explore
-          </h6>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Travel Guides
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Local Experiences
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Top Destinations
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Adventure Trips
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Travel Tips
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Community Stories
-          </a>
-        </nav>
-
-        <nav>
-          <h6 className="footer-title mb-2 text-lm-text-primary dark:text-dm-text-primary">
-            Company
-          </h6>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            About Us
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Contact
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Careers
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Blog
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Press
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Partners
-          </a>
-        </nav>
-
-        <nav>
-          <h6 className="footer-title mb-2 text-lm-text-primary dark:text-dm-text-primary">
-            Legal
-          </h6>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Terms of Use
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Cookie Policy
-          </a>
-          <a
-            href="#"
-            className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-          >
-            Security
-          </a>
-        </nav>
-
-        <nav>
-          <h6 className="footer-title mb-2 text-lm-text-primary dark:text-dm-text-primary">
-            Connect With Us
-          </h6>
-          <div className="flex space-x-4">
-            {/* Replace # with your social links */}
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-            >
-              Facebook
-            </a>
-            <a
-              href="#"
-              aria-label="Twitter"
-              className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-            >
-              Twitter
-            </a>
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-            >
-              Instagram
-            </a>
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
-            >
-              LinkedIn
-            </a>
+    <footer className="bg-transparent text-lm-text-primary dark:text-dm-text-primary p-10 border-t border-t-lm-border dark:border-t-dm-border">
+      <div className="flex flex-col md:flex-col lg:flex-row flex-wrap gap-y-12 lg:gap-y-0 lg:gap-x-20 justify-between items-start">
+        {/* Newsletter Section */}
+        <div className="w-full lg:max-w-sm">
+          <h6 className="footer-title mb-2">Connect With Us</h6>
+          <div className="flex flex-wrap gap-4">
+            {["Facebook", "Twitter", "Instagram", "LinkedIn"].map(
+              (platform) => (
+                <a
+                  key={platform}
+                  href="#"
+                  aria-label={platform}
+                  className="link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary"
+                >
+                  {platform}
+                </a>
+              )
+            )}
           </div>
-          <p className="mt-4 text-xs text-lm-text-secondary dark:text-dm-text-secondary">
-            Subscribe to our newsletter for travel tips & exclusive deals.
-          </p>
-          <form className="mt-2 flex gap-2 w-full">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="input focus:outline-none input-bordered input-md flex-1 bg-lm-surface dark:bg-dm-surface border-lm-border dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary"
-              required
-            />
-            <button
-              type="submit"
-              className="btn bg-lm-primary hover:bg-lm-primary-hover focus:ring-lm-primary-focus dark:bg-dm-primary dark:hover:bg-dm-primary-hover dark:focus:ring-dm-primary-focus btn-md text-white transition-all"
-            >
-              Subscribe
-            </button>
+          <form className="mt-5">
+            <NewsLetter />
           </form>
-        </nav>
-      </footer>
-    </>
+        </div>
+
+        {/* Navigation Sections */}
+        <div className="w-full lg:flex-1 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          {footerNavItems.map((section) => (
+            <nav key={section.title}>
+              <h6 className="footer-title mb-2">{section.title}</h6>
+              {section.links.map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className="block link link-hover text-lm-text-secondary dark:text-dm-text-secondary hover:text-lm-primary dark:hover:text-dm-primary text-sm"
+                >
+                  {link}
+                </a>
+              ))}
+            </nav>
+          ))}
+        </div>
+      </div>
+    </footer>
   );
 };
 
