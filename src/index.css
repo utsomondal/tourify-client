@@ -31,17 +31,17 @@
 
   /*For Light mode */
   /* Primary */
-  --color-lm-primary: #2563eb; /* Trustworthy Blue */
+  --color-lm-primary: #2563eb;
   --color-lm-primary-hover: #1d4ed8;
   --color-lm-primary-focus: #1e40af;
 
   /* Accent */
-  --color-lm-accent: #f59e0b; /* Engaging Amber */
+  --color-lm-accent: #f59e0b;
   --color-lm-accent-hover: #d97706;
   --color-lm-accent-focus: #b45309;
 
   /* Success */
-  --color-lm-success: #10b981; /* Calming Green */
+  --color-lm-success: #10b981;
   --color-lm-success-hover: #059669;
   --color-lm-success-focus: #047857;
 
@@ -54,17 +54,17 @@
 
   /*For Dark mode */
   /* Primary */
-  --color-dm-primary: #3b82f6; /* Trustworthy Blue */
+  --color-dm-primary: #3b82f6;
   --color-dm-primary-hover: #60a5fa;
   --color-dm-primary-focus: #93c5fd;
 
   /* Accent */
-  --color-dm-accent: #fbbf24; /* Engaging Amber */
+  --color-dm-accent: #fbbf24;
   --color-dm-accent-hover: #fcd34d;
   --color-dm-accent-focus: #fde68a;
 
   /* Success */
-  --color-dm-success: #34d399; /* Calming Green */
+  --color-dm-success: #34d399;
   --color-dm-success-hover: #6ee7b7;
   --color-dm-success-focus: #a7f3d0;
 
@@ -84,4 +84,31 @@
 }
 .social-login-btn {
   @apply flex-1 flex items-center justify-center gap-2 rounded-md py-2 cursor-pointer border border-gray-400 dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary bg-transparent transition-all hover:bg-gray-200 hover:border-gray-500 hover:shadow-md dark:hover:bg-dm-surface dark:hover:border-dm-primary-hover dark:hover:shadow-lg;
+}
+
+/* swiper custom styling */
+.swiper-button-next,
+.swiper-button-prev {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  color: white;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.5rem;
+}
+
+.swiper-pagination-bullet {
+  background-color: #d1d5db;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #fff;
+  opacity: 1;
 }
