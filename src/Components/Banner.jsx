@@ -55,12 +55,11 @@ const Banner = () => {
                 </p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight drop-shadow-md">
                   Discover <br className="hidden sm:block" />
-                  <span className="whitespace-nowrap">
-                    {slide.name}
-                  </span>
+                  <span className="whitespace-nowrap">{slide.name}</span>
                 </h1>
                 <p className="text-sm sm:text-base text-gray-200 whitespace-nowrap">
-                  Explore the culture, beauty, and <br className="block sm:hidden" /> lifestyle of this
+                  Explore the culture, beauty, and{" "}
+                  <br className="block sm:hidden" />lifestyle of this
                   breathtaking city.
                 </p>
                 <Link
