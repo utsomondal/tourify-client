@@ -14,7 +14,7 @@ const TouristsSpotSection = () => {
           Discover stunning destinations handpicked for travelers like you.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* <TouristSpotCard /> */}
         {[...Array(6)].map((_, index) => (
           <TouristSpotCard key={index} />
