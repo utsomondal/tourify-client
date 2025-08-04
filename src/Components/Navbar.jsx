@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { renderNavItems } from "./RenderNavItems";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { RiMenuLine } from "react-icons/ri";
+import { useAuth } from "../Utils/useAuth";
 import Logo from "./Logo";
 import Drawer from "./Drawer";
 import JoinButton from "./JoinButton";
-import { useAuth } from "../Utils/useAuth";
 import UserCard from "./UserCard";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem("theme");
@@ -42,7 +42,13 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-1">
-          {user ? <UserCard /> : <JoinButton />}
+          {loading ? (
+            <span className="loading loading-ring loading-xl bg-gradient-to-br from-purple-500 to-pink-500"></span>
+          ) : user ? (
+            <UserCard />
+          ) : (
+            <JoinButton />
+          )}
 
           {/* Theme Controller */}
           <div className="pl-2">

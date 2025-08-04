@@ -1,10 +1,10 @@
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../Utils/useAuth";
 
 const RegisterPage = () => {
-  const { registerUser } = useAuth();
+  const { registerUser, loading, setLoading } = useAuth();
   const {
     register,
     handleSubmit,
@@ -12,21 +12,24 @@ const RegisterPage = () => {
     reset,
   } = useForm();
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
 
     registerUser(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
+        navigate(location.state?.from?.pathname || "/", { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage, errorCode);
+        setLoading(false);
       });
-    // send data to backend
+
     reset();
   };
 
@@ -175,7 +178,11 @@ const RegisterPage = () => {
               type="submit"
               className="w-full bg-lm-primary dark:bg-dm-primary hover:bg-lm-primary-hover dark:hover:bg-dm-primary-hover text-white font-semibold py-2 px-4 rounded-md transition-all duration-200 cursor-pointer"
             >
-              Register
+              {loading ? (
+                <span className="loading loading-spinner loading-md"></span>
+              ) : (
+                "Register"
+              )}
             </button>
           </form>
 

@@ -18,7 +18,7 @@ const UserCard = () => {
   return (
     <div className="relative group">
       {/* Avatar (hover trigger) */}
-      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg cursor-pointer">
+      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-lg cursor-pointer">
         {initials}
       </div>
 
