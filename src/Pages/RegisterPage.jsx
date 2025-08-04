@@ -1,36 +1,19 @@
-import { useState } from "react";
 import { Link } from "react-router";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
 const RegisterPage = () => {
-  const [error, setError] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const photoURL = form.photoURL.value.trim();
-    const password = form.password.value;
-
-    // Password validation
-    const isValidPassword =
-      /[A-Z]/.test(password) && /[a-z]/.test(password) && password.length >= 6;
-
-    if (!isValidPassword) {
-      setError(
-        "Password must be at least 6 characters, contain an uppercase and a lowercase letter."
-      );
-      return;
-    }
-
-    setError("");
-
-    // Form data object
-    const userData = { name, email, photoURL, password };
-    console.log("Registering User:", userData);
-    // TODO: Call your registration API here
+  const onSubmit = (data) => {
+    console.log("Registering User", data);
+    // send data to backend
+    reset();
   };
 
   return (
@@ -65,7 +48,7 @@ const RegisterPage = () => {
             Register Your Account
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Name */}
             <div>
               <label
@@ -76,12 +59,17 @@ const RegisterPage = () => {
               </label>
               <input
                 id="name"
-                name="name"
+                {...register("fullname", { required: "Full Name is Required" })}
                 type="text"
                 placeholder="John Doe"
                 required
                 className="w-full mt-1 px-4 py-2 border rounded-md bg-transparent border-lm-border dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary focus:outline-none focus:ring-2 focus:ring-lm-primary dark:focus:ring-dm-primary"
               />
+              {errors.fullname && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.fullname.message}
+                </p>
+              )}
             </div>
 
             {/* Email */}
@@ -94,12 +82,23 @@ const RegisterPage = () => {
               </label>
               <input
                 id="email"
-                name="email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Invalid email address",
+                  },
+                })}
                 type="email"
-                placeholder="example@email.com"
                 required
+                placeholder="example@email.com"
                 className="w-full mt-1 px-4 py-2 border rounded-md bg-transparent border-lm-border dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary focus:outline-none focus:ring-2 focus:ring-lm-primary dark:focus:ring-dm-primary"
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Photo URL */}
@@ -112,7 +111,7 @@ const RegisterPage = () => {
               </label>
               <input
                 id="photoURL"
-                name="photoURL"
+                {...register("photoURL")}
                 type="url"
                 placeholder="https://example.com/photo.jpg"
                 className="w-full mt-1 px-4 py-2 border rounded-md bg-transparent border-lm-border dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary focus:outline-none focus:ring-2 focus:ring-lm-primary dark:focus:ring-dm-primary"
@@ -129,13 +128,32 @@ const RegisterPage = () => {
               </label>
               <input
                 id="password"
-                name="password"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                  validate: {
+                    hasUpperCase: (value) =>
+                      /[A-Z]/.test(value) || "Must include an uppercase letter",
+                    hasNumber: (value) =>
+                      /[0-9]/.test(value) || "Must include a number",
+                    hasSpecialChar: (value) =>
+                      /[^A-Za-z0-9]/.test(value) ||
+                      "Must include a special character",
+                  },
+                })}
                 type="password"
                 placeholder="••••••••"
                 required
                 className="w-full mt-1 px-4 py-2 border rounded-md bg-transparent border-lm-border dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary focus:outline-none focus:ring-2 focus:ring-lm-primary dark:focus:ring-dm-primary"
               />
-              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
             {/* Submit Button */}
