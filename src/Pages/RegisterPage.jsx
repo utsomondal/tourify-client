@@ -1,8 +1,10 @@
 import { Link } from "react-router";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../Utils/useAuth";
 
 const RegisterPage = () => {
+  const { registerUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -11,7 +13,19 @@ const RegisterPage = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Registering User", data);
+    const email = data.email;
+    const password = data.password;
+
+    registerUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage, errorCode);
+      });
     // send data to backend
     reset();
   };

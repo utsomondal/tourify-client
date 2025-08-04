@@ -5,8 +5,12 @@ import { RiMenuLine } from "react-icons/ri";
 import Logo from "./Logo";
 import Drawer from "./Drawer";
 import JoinButton from "./JoinButton";
+import { useAuth } from "../Utils/useAuth";
+import UserCard from "./UserCard";
 
 const Navbar = () => {
+  const { user } = useAuth();
+
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem("theme");
     if (saved === "dark") return true;
@@ -38,7 +42,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-1">
-          <JoinButton />
+          {user ? <UserCard /> : <JoinButton />}
+
           {/* Theme Controller */}
           <div className="pl-2">
             <label className="toggle text-lm-text-primary dark:text-dm-text-primary">

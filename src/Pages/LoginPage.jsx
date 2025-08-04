@@ -1,7 +1,26 @@
 import { Link } from "react-router";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../Utils/useAuth";
 
 const LoginPage = () => {
+  const { register, handleSubmit, reset } = useForm();
+  const { loginUser } = useAuth();
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    loginUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage, errorCode);
+      });
+    reset();
+  };
   return (
     <div className="flex flex-col md:flex-row items-center bg-transparent justify-center px-5 py-7 sm:px-10 sm:py-14">
       {/* Left Side - Text About Tourify */}
@@ -47,13 +66,14 @@ const LoginPage = () => {
             Login to your account
           </h2>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             {/* Email */}
             <div>
               <label className="block text-sm font-medium text-lm-text-secondary dark:text-dm-text-secondary">
                 Email
               </label>
               <input
+                {...register("email")}
                 type="email"
                 placeholder="example@email.com"
                 className="w-full mt-1 px-4 py-2 border rounded-md bg-transparent border-lm-border dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary focus:outline-none focus:ring-2 focus:ring-lm-primary dark:focus:ring-dm-primary"
@@ -67,6 +87,7 @@ const LoginPage = () => {
                 Password
               </label>
               <input
+                {...register("password")}
                 type="password"
                 placeholder="••••••••"
                 className="w-full mt-1 px-4 py-2 border rounded-md bg-transparent border-lm-border dark:border-dm-border text-lm-text-primary dark:text-dm-text-primary focus:outline-none focus:ring-2 focus:ring-lm-primary dark:focus:ring-dm-primary"
@@ -85,8 +106,6 @@ const LoginPage = () => {
 
           {/* OR divider */}
           <div className="divider py-5">or login with</div>
-
-          {/* Social buttons */}
           <div className="flex gap-4">
             <button className="social-login-btn">
               <FaGoogle /> Google
