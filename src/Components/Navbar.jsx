@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-1">
           {loading ? (
-            <span className="loading loading-ring loading-xl bg-gradient-to-br from-purple-500 to-pink-500"></span>
+            <span className="loading loading-ring loading-xl text-lm-primary dark:text-dm-primary"></span>
           ) : user ? (
             <UserCard />
           ) : (

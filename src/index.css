@@ -29,52 +29,37 @@
     }
   }
 
-  /* For Light Mode */
-/* Primary */
---color-lm-primary: #3f51b5;
---color-lm-primary-hover: #303f9f;
---color-lm-primary-focus: #1a237e;
+  /* Light Mode */
+  --color-lm-primary: #009688;
+  --color-lm-primary-hover: #00796b;
+  --color-lm-primary-focus: #004d40;
+  --color-lm-accent: #ff8c00;
+  --color-lm-accent-hover: #fb8c00;
+  --color-lm-accent-focus: #ef6c00;
+  --color-lm-success: #66bb6a;
+  --color-lm-success-hover: #43a047;
+  --color-lm-success-focus: #2e7d32;
+  --color-lm-text-primary: #212121;
+  --color-lm-text-secondary: #616161;
+  --color-lm-background: #fefefe;
+  --color-lm-surface: #ffffff;
+  --color-lm-border: #e0e0e0;
 
-/* Accent */
---color-lm-accent: #ff7043;
---color-lm-accent-hover: #f4511e;
---color-lm-accent-focus: #bf360c;
-
-/* Success */
---color-lm-success: #26a69a;
---color-lm-success-hover: #1e857d;
---color-lm-success-focus: #16635e;
-
-/* Neutral */
---color-lm-text-primary: #212121;
---color-lm-text-secondary: #616161;
---color-lm-background: #fefefe;
---color-lm-surface: #ffffff;
---color-lm-border: #e0e0e0;
-
-
-/* For Dark Mode */
-/* Primary */
---color-dm-primary: #64b5f6;
---color-dm-primary-hover: #42a5f5;
---color-dm-primary-focus: #90caf9;
-
-/* Accent */
---color-dm-accent: #ff8a65;
---color-dm-accent-hover: #ff7043;
---color-dm-accent-focus: #ff5722;
-
-/* Success */
---color-dm-success: #4db6ac;
---color-dm-success-hover: #26a69a;
---color-dm-success-focus: #00796b;
-
-/* Neutral */
---color-dm-text-primary: #f5f5f5;
---color-dm-text-secondary: #bdbdbd;
---color-dm-background: #121212;
---color-dm-surface: #1e1e1e;
---color-dm-border: #2c2c2c;
+  /* Dark Mode */
+  --color-dm-primary: #26a69a;
+  --color-dm-primary-hover: #1e857d;
+  --color-dm-primary-focus: #004d40;
+  --color-dm-accent: #ffb74d;
+  --color-dm-accent-hover: #ffa726;
+  --color-dm-accent-focus: #fb8c00;
+  --color-dm-success: #81c784;
+  --color-dm-success-hover: #66bb6a;
+  --color-dm-success-focus: #388e3c;
+  --color-dm-text-primary: #e0e0e0;
+  --color-dm-text-secondary: #9e9e9e;
+  --color-dm-background: #0f1115;
+  --color-dm-surface: #1c1f26;
+  --color-dm-border: #2a2d34;
 }
 
 .login-btn {
