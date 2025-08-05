@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../Utils/useAuth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { showToast } from "../Constants/ShowToast";
 
 const RegisterPage = () => {
   const { registerUser, loading, setLoading, googleAuth, githubAuth } =
@@ -18,6 +18,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const email = data.email;
     const password = data.password;
 
@@ -36,27 +37,33 @@ const RegisterPage = () => {
   };
 
   const handleGoogleAuth = () => {
+    setLoading(true);
     googleAuth()
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
+        showToast("success", "Login Successful");
+        setTimeout(() => {
+          navigate(location.state?.from?.pathname || "/", { replace: true });
+        }, 100);
       })
       .catch((error) => {
-        const message = error.message;
-        console.log(message);
+        const errorMessage = error.message || "Something went wrong";
+        showToast("error", errorMessage);
         setLoading(false);
       });
   };
-  
+
   const handleGithubAuth = () => {
+    setLoading(true);
     githubAuth()
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
+        showToast("success", "Login Successful");
+        setTimeout(() => {
+          navigate(location.state?.from?.pathname || "/", { replace: true });
+        }, 100);
       })
       .catch((error) => {
-        const message = error.message;
-        console.log(message);
+        const errorMessage = error.message || "Something went wrong";
+        showToast("error", errorMessage);
         setLoading(false);
       });
   };

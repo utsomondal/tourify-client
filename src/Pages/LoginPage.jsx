@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../Utils/useAuth";
+import { showToast } from "../Constants/ShowToast";
 
 const LoginPage = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -11,17 +12,20 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const email = data.email;
     const password = data.password;
 
     loginUser(email, password)
       .then(() => {
-        navigate(location.state?.from?.pathname || "/", { replace: true });
+        showToast("success", "Login Successful");
+        setTimeout(() => {
+          navigate(location.state?.from?.pathname || "/", { replace: true });
+        }, 100);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage, errorCode);
+        const errorMessage = error.message || "Something went wrong";
+        showToast("error", errorMessage);
         setLoading(false);
       });
 
@@ -29,27 +33,33 @@ const LoginPage = () => {
   };
 
   const handleGoogleAuth = () => {
+    setLoading(true);
     googleAuth()
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
+        showToast("success", "Login Successful");
+        setTimeout(() => {
+          navigate(location.state?.from?.pathname || "/", { replace: true });
+        }, 100);
       })
       .catch((error) => {
-        const message = error.message;
-        console.log(message);
+        const errorMessage = error.message || "Something went wrong";
+        showToast("error", errorMessage);
         setLoading(false);
       });
   };
 
   const handleGithubAuth = () => {
+    setLoading(true);
     githubAuth()
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
+        showToast("success", "Login Successful");
+        setTimeout(() => {
+          navigate(location.state?.from?.pathname || "/", { replace: true });
+        }, 100);
       })
       .catch((error) => {
-        const message = error.message;
-        console.log(message);
+        const errorMessage = error.message || "Something went wrong";
+        showToast("error", errorMessage);
         setLoading(false);
       });
   };
