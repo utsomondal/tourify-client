@@ -2,9 +2,11 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../Utils/useAuth";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const RegisterPage = () => {
-  const { registerUser, loading, setLoading } = useAuth();
+  const { registerUser, loading, setLoading, googleAuth, githubAuth } =
+    useAuth();
   const {
     register,
     handleSubmit,
@@ -31,6 +33,32 @@ const RegisterPage = () => {
       });
 
     reset();
+  };
+
+  const handleGoogleAuth = () => {
+    googleAuth()
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const message = error.message;
+        console.log(message);
+        setLoading(false);
+      });
+  };
+  
+  const handleGithubAuth = () => {
+    githubAuth()
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const message = error.message;
+        console.log(message);
+        setLoading(false);
+      });
   };
 
   return (
@@ -191,10 +219,10 @@ const RegisterPage = () => {
 
           {/* Social Buttons */}
           <div className="flex gap-4">
-            <button className="social-login-btn">
+            <button className="social-login-btn" onClick={handleGoogleAuth}>
               <FaGoogle /> Google
             </button>
-            <button className="social-login-btn">
+            <button className="social-login-btn" onClick={handleGithubAuth}>
               <FaGithub /> GitHub
             </button>
           </div>

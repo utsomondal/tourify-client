@@ -5,7 +5,7 @@ import { useAuth } from "../Utils/useAuth";
 
 const LoginPage = () => {
   const { register, handleSubmit, reset } = useForm();
-  const { loginUser, loading, setLoading } = useAuth();
+  const { loginUser, loading, setLoading, googleAuth, githubAuth } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,9 +24,36 @@ const LoginPage = () => {
         console.log(errorMessage, errorCode);
         setLoading(false);
       });
-      
+
     reset();
   };
+
+  const handleGoogleAuth = () => {
+    googleAuth()
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const message = error.message;
+        console.log(message);
+        setLoading(false);
+      });
+  };
+
+  const handleGithubAuth = () => {
+    githubAuth()
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const message = error.message;
+        console.log(message);
+        setLoading(false);
+      });
+  };
+
   return (
     <div className="flex flex-col md:flex-row items-center bg-transparent justify-center px-5 py-7 sm:px-10 sm:py-14">
       {/* Left Side - Text About Tourify */}
@@ -117,10 +144,10 @@ const LoginPage = () => {
           {/* OR divider */}
           <div className="divider py-5">or login with</div>
           <div className="flex gap-4">
-            <button className="social-login-btn">
+            <button className="social-login-btn" onClick={handleGoogleAuth}>
               <FaGoogle /> Google
             </button>
-            <button className="social-login-btn">
+            <button className="social-login-btn" onClick={handleGithubAuth}>
               <FaGithub /> GitHub
             </button>
           </div>
