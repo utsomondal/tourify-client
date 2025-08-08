@@ -1,7 +1,250 @@
+import {
+  FiImage,
+  FiMapPin,
+  FiGlobe,
+  FiMap,
+  FiFileText,
+  FiDollarSign,
+  FiCalendar,
+  FiClock,
+  FiUsers,
+  FiMail,
+  FiUser,
+} from "react-icons/fi";
+import { useForm } from "react-hook-form";
+import { showToast } from "../Constants/ShowToast";
+
 const AddTouristsSpotPage = () => {
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+  const onError = () => {
+    showToast("error", "Please fill all required fields");
+  };
   return (
-    <div>
-      <h1>AddTouristsSpotPage</h1>
+    <div className=" p-8 bg-lm-surface dark:bg-dm-surface">
+      <h1 className="text-3xl font-bold mb-8 text-lm-primary dark:text-dm-primary text-center">
+        Add Tourist Spot
+      </h1>
+      <form>
+        <div className="flex flex-col md:flex-row gap-10">
+          {/* Left side */}
+          <div className="flex-1 space-y-6">
+            {/* Image URL */}
+            <div>
+              <label htmlFor="imageUrl" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiImage /> Image URL
+                </div>
+              </label>
+              <input
+                type="url"
+                {...register("imageURL", { required: true })}
+                placeholder="Paste image URL"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+
+            {/* Tourist Spot Name */}
+            <div>
+              <label
+                htmlFor="touristsSpotName"
+                className="block mb-1 font-semibold"
+              >
+                <div className="flex items-center gap-2">
+                  <FiMapPin /> Tourist Spot Name
+                </div>
+              </label>
+              <input
+                type="text"
+                id="touristsSpotName"
+                {...register("touristsSpotName", { required: true })}
+                placeholder="Name of the tourist spot"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+
+            {/* Country */}
+            <div>
+              <label htmlFor="countryName" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiGlobe /> Country
+                </div>
+              </label>
+              <select
+                id="countryName"
+                {...register("countryName", { required: true })}
+                className="w-full rounded-md border px-4 py-3"
+              >
+                <option value="">Select a country</option>
+                <option>France</option>
+                <option>England</option>
+                <option>Italy</option>
+                <option>Spain</option>
+                <option>Netherlands</option>
+                <option>Switzerland</option>
+              </select>
+            </div>
+
+            {/* Location */}
+            <div>
+              <label htmlFor="location" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiMap /> Location
+                </div>
+              </label>
+              <input
+                type="text"
+                id="location"
+                {...register("location", { required: true })}
+                placeholder="Exact location"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+
+            {/* Short Description */}
+            <div>
+              <label
+                htmlFor="shortDescription"
+                className="block mb-1 font-semibold"
+              >
+                <div className="flex items-center gap-2">
+                  <FiFileText /> Short Description
+                </div>
+              </label>
+              <textarea
+                id="shortDescription"
+                {...register("shortDescription", { required: true })}
+                rows={5}
+                placeholder="Describe briefly"
+                className="w-full rounded-md border px-4 py-3 resize-none"
+              />
+            </div>
+          </div>
+
+          {/* Right side */}
+          <div className="flex-1 space-y-6">
+            {/* Average Cost */}
+            <div>
+              <label htmlFor="averageCost" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiDollarSign /> Average Cost (USD)
+                </div>
+              </label>
+              <input
+                type="number"
+                id="averageCost"
+                {...register("averageCost", { required: true })}
+                placeholder="e.g. 150"
+                min="0"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+
+            {/* Seasonality */}
+            <div>
+              <label htmlFor="seasonality" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiCalendar /> Seasonality
+                </div>
+              </label>
+              <select
+                id="seasonality"
+                {...register("seasonality", { required: true })}
+                className="w-full rounded-md border px-4 py-3"
+              >
+                <option value="">Select season</option>
+                <option>Summer</option>
+                <option>Winter</option>
+                <option>Spring</option>
+                <option>Autumn</option>
+              </select>
+            </div>
+
+            {/* Travel Time */}
+            <div>
+              <label htmlFor="travelTime" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiClock /> Travel Time
+                </div>
+              </label>
+              <input
+                type="text"
+                id="travelTime"
+                {...register("travelTime", { required: true })}
+                placeholder="e.g. 7 days"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+
+            {/* Total Visitors Per Year */}
+            <div>
+              <label
+                htmlFor="totalVisitorsPerYear"
+                className="block mb-1 font-semibold"
+              >
+                <div className="flex items-center gap-2">
+                  <FiUsers /> Total Visitors Per Year
+                </div>
+              </label>
+              <input
+                type="number"
+                id="totalVisitorsPerYear"
+                {...register("totalVisitorsPerYear", { required: true })}
+                placeholder="e.g. 10000"
+                min="0"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+
+            {/* User Email */}
+            <div>
+              <label htmlFor="userEmail" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiMail /> User Email
+                </div>
+              </label>
+              <input
+                type="email"
+                id="userEmail"
+                {...register("userEmail", { required: true })}
+                placeholder="Your email"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+
+            {/* User Name */}
+            <div>
+              <label htmlFor="userName" className="block mb-1 font-semibold">
+                <div className="flex items-center gap-2">
+                  <FiUser /> User Name
+                </div>
+              </label>
+              <input
+                type="text"
+                id="userName"
+                {...register("userName", { required: true })}
+                placeholder="Your name"
+                className="w-full rounded-md border px-4 py-3"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Submit button */}
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={handleSubmit(onSubmit, onError)}
+            type="submit"
+            className="bg-lm-primary text-white font-bold px-16 py-4 rounded-lg shadow-md transition cursor-pointer"
+          >
+            Add
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
