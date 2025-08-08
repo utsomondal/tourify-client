@@ -13,24 +13,45 @@ import {
 } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import { showToast } from "../Constants/ShowToast";
+import Swal from "sweetalert2";
 
 const AddTouristsSpotPage = () => {
   const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit = async (data) => {
+    const res = await fetch("http://localhost:3000/add-tourist-spot", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (result.acknowledged === true) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Tourist Spot Added Successfully!",
+      });
+      reset();
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+    }
   };
   const onError = () => {
     showToast("error", "Please fill all required fields");
   };
   return (
-    <div className=" p-8 bg-lm-surface dark:bg-dm-surface">
+    <div className="p-8 bg-lm-surface dark:bg-dm-surface">
       <h1 className="text-3xl font-bold mb-8 text-lm-primary dark:text-dm-primary text-center">
         Add Tourist Spot
       </h1>
       <form>
-        <div className="flex flex-col md:flex-row gap-10">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-10">
           {/* Left side */}
           <div className="flex-1 space-y-6">
             {/* Image URL */}

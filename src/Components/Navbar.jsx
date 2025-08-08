@@ -54,10 +54,13 @@ const Navbar = () => {
           <div className="pl-2">
             <label className="toggle text-lm-text-primary dark:text-dm-text-primary">
               <input
+                data-fake-filler-ignore="true"
                 type="checkbox"
                 checked={isDark}
                 onChange={(e) => {
-                  setIsDark(e.target.checked);
+                  if (e.isTrusted) {
+                    setIsDark(e.target.checked);
+                  }
                 }}
                 className="theme-controller"
               />
