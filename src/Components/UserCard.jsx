@@ -18,7 +18,7 @@ const UserCard = () => {
   return (
     <div className="relative group">
       {/* Avatar (hover trigger) */}
-      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-base font-semibold cursor-pointer overflow-hidden p-3 bg-lm-primary hover:bg-lm-primary-hover dark:bg-dm-primary dark:hover:bg-dm-primary-hover">
+      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-base font-semibold cursor-pointer overflow-hidden bg-lm-primary hover:bg-lm-primary-hover dark:bg-dm-primary dark:hover:bg-dm-primary-hover">
         {user?.photoURL ? (
           <img
             src={user.photoURL}

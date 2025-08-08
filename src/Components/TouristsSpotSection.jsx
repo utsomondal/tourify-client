@@ -1,6 +1,16 @@
+import { useState } from "react";
 import TouristSpotCard from "./TouristSpotCard";
+import { useEffect } from "react";
 
 const TouristsSpotSection = () => {
+  const [touristSpot, setTouristSpot] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/all-tourist-spots/top")
+      .then((res) => res.json())
+      .then((data) => setTouristSpot(data));
+  }, []);
+
   return (
     <div className="my-20">
       <div className="pb-10">
@@ -16,8 +26,8 @@ const TouristsSpotSection = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* <TouristSpotCard /> */}
-        {[...Array(6)].map((_, index) => (
-          <TouristSpotCard key={index} />
+        {touristSpot.map((touristSpot) => (
+          <TouristSpotCard touristSpot={touristSpot} />
         ))}
       </div>
     </div>

@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router";
+import { FaUsers, FaDollarSign, FaClock } from "react-icons/fa";
+import { LuMapPin } from "react-icons/lu";
 
 const TouristSpotCard = ({ touristSpot }) => {
   const {
@@ -18,39 +20,51 @@ const TouristSpotCard = ({ touristSpot }) => {
   };
 
   return (
-    <div className="relative rounded-2xl overflow-hidden shadow-md group transition-all duration-300 hover:shadow-xl bg-white dark:bg-gray-900">
-      {/* Background Image */}
+    <div className="relative rounded-2xl overflow-hidden group transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:rotate-[0.5deg] bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-gray-800">
+      {/* Image */}
       <img
         src={imageURL}
         alt={touristsSpotName}
-        className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+        className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
       />
 
-      {/* Dark Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent z-10" />
-
-      {/* Text Content */}
-      <div className="absolute bottom-5 left-5 right-5 z-20 text-white space-y-2">
-        <h2 className="text-xl font-semibold leading-tight">{touristsSpotName}</h2>
-
-        <p className="text-sm">
-          <span className="font-semibold">Average Cost:</span> ${averageCost}
-        </p>
-        <p className="text-sm">
-          <span className="font-semibold">Visitors Per Year:</span>{" "}
-          {Number(totalVisitorsPerYear).toLocaleString()}
-        </p>
-        <p className="text-sm">
-          <span className="font-semibold">Travel Time:</span> {travelTime}
-        </p>
-        <p className="text-sm">
-          <span className="font-semibold">Seasonality:</span> {seasonality}
+      {/* Glassmorphism Overlay */}
+      <div
+        className="
+    absolute bottom-4 left-4 right-4 
+    rounded-xl p-4 border shadow-lg backdrop-blur-md
+    bg-white/80 text-gray-900 border-gray-300
+    dark:bg-black/30 dark:text-white dark:border-white/20
+  "
+      >
+        {/* Title */}
+        <h2 className="text-lg font-semibold flex items-center gap-2">
+          <LuMapPin className="text-gray-700 dark:text-white/70" />{" "}
+          {touristsSpotName}
+        </h2>
+        <p className="text-xs mt-0.5 text-gray-600 dark:text-white/60">
+          {seasonality}
         </p>
 
-        <div className="mt-3 flex justify-end">
+        {/* Info Row */}
+        <div className="mt-3 flex justify-between text-sm">
+          <div className="flex items-center gap-1 text-gray-700 dark:text-white/80">
+            <FaDollarSign /> ${averageCost}
+          </div>
+          <div className="flex items-center gap-1 text-gray-700 dark:text-white/80">
+            <FaUsers /> {Number(totalVisitorsPerYear).toLocaleString()}
+          </div>
+          <div className="flex items-center gap-1 text-gray-700 dark:text-white/80">
+            <FaClock /> {travelTime}
+          </div>
+        </div>
+
+        {/* Button */}
+        <div className="mt-3 text-right">
           <button
             onClick={handleViewDetails}
-            className="px-5 py-2 text-sm font-medium border border-white/50 text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer"
+            className="
+        px-4 py-1.5 text-sm font-medium rounded-full border border-gray-700 text-gray-900 hover:bg-gray-200 hover:text-gray-900 dark:border-white/40 dark:text-white dark:hover:bg-white dark:hover:text-black cursor-pointer"
           >
             View Details
           </button>
