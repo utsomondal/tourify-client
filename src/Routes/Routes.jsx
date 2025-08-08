@@ -8,6 +8,7 @@ import MyListPage from "../Pages/MyListPage";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import PrivateRoute from "../Private/PrivateRoute";
+import DetailsPage from "../Pages/DetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/all-tourists-spot",
         element: <AllTouristsSpotPage />,
-        loader:()=>fetch('http://localhost:3000/all-tourist-spots'),
+        loader: () => fetch("http://localhost:3000/all-tourist-spots"),
       },
       {
         path: "/add-tourists-spot",
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyListPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/tourist-spot/:id",
+        element: (
+          <PrivateRoute>
+            <DetailsPage />
           </PrivateRoute>
         ),
       },
