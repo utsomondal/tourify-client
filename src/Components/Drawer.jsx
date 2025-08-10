@@ -1,6 +1,17 @@
 import { RiCloseFill } from "react-icons/ri";
 import { renderNavItems } from "./RenderNavItems";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
 const Drawer = ({ isDark }) => {
+  const routeLocation = useLocation();
+
+  useEffect(() => {
+    const drawerCheckbox = document.getElementById("my-drawer");
+    if (drawerCheckbox) {
+      drawerCheckbox.checked = false;
+    }
+  }, [routeLocation]);
+
   return (
     <>
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />

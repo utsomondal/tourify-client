@@ -9,14 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider
-        router={router}
-        hydrateFallbackElement={
-          <div className="h-screen flex items-center justify-center">
-            <span className="animate-pulse text-gray-500">Loading...</span>
-          </div>
-        }
-      />
+      <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>
 );

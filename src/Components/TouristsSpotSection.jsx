@@ -12,7 +12,7 @@ const TouristsSpotSection = () => {
   }, []);
 
   return (
-    <div className="my-20">
+    <div className="my-10 sm:my-20">
       <div className="pb-10">
         <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-bold text-lm-text-primary dark:text-dm-text-primary">
           Explore Breathtaking{" "}
@@ -24,7 +24,7 @@ const TouristsSpotSection = () => {
           Discover stunning destinations handpicked for travelers like you.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
         {/* <TouristSpotCard /> */}
         {touristSpot.map((touristSpot) => (
           <TouristSpotCard key={touristSpot._id} touristSpot={touristSpot} />

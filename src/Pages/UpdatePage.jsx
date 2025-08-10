@@ -59,6 +59,7 @@ const UpdatePage = () => {
         title: "No Changes",
         text: "You didn't change anything.",
       });
+      navigate("/my-list");
     }
   };
 

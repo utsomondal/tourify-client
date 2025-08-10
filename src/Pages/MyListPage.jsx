@@ -52,28 +52,29 @@ const MyListPage = () => {
   };
 
   return (
-    <div className="p-8 bg-lm-background dark:bg-dm-background min-h-[calc(100vh-297px)]">
-      <h1 className="text-3xl font-bold mb-8 text-lm-primary dark:text-dm-primary text-center">
+    <div className="p-4 sm:p-8 bg-lm-background dark:bg-dm-background min-h-[calc(100vh-297px)]">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-lm-primary dark:text-dm-primary text-center">
         My Tourist Spots
       </h1>
 
-      <div className="overflow-x-auto rounded-lg shadow-md bg-lm-surface dark:bg-dm-surface border-lm-border dark:border-dm-border">
+      {/* Table container */}
+      <div className="overflow-x-auto rounded-lg shadow-md bg-lm-surface dark:bg-dm-surface border border-lm-border dark:border-dm-border hidden md:block">
         <table className="w-full border-collapse text-sm text-lm-text-primary dark:text-dm-text-primary">
           <thead className="bg-lm-success dark:bg-dm-success">
             <tr>
-              <th className="p-3 border border-lm-border dark:border-dm-border font-semibold text-lm-text-primary">
+              <th className="p-3 border border-lm-border dark:border-dm-border">
                 Name
               </th>
-              <th className="p-3 border border-lm-border dark:border-dm-border font-semibold text-lm-text-primary">
+              <th className="p-3 border border-lm-border dark:border-dm-border">
                 Country
               </th>
-              <th className="p-3 border border-lm-border dark:border-dm-border font-semibold text-lm-text-primary">
+              <th className="p-3 border border-lm-border dark:border-dm-border">
                 Location
               </th>
-              <th className="p-3 border border-lm-border dark:border-dm-border font-semibold text-lm-text-primary">
+              <th className="p-3 border border-lm-border dark:border-dm-border">
                 Best Season
               </th>
-              <th className="p-3 border border-lm-border dark:border-dm-border font-semibold text-center text-lm-text-primary">
+              <th className="p-3 border border-lm-border dark:border-dm-border text-center">
                 Actions
               </th>
             </tr>
@@ -97,19 +98,21 @@ const MyListPage = () => {
                   <td className="p-3 border border-lm-border dark:border-dm-border">
                     {spot.seasonality}
                   </td>
-                  <td className="p-3 border border-lm-border dark:border-dm-border text-center space-x-2">
-                    <button
-                      className="px-3 py-1 rounded text-white bg-lm-primary hover:bg-lm-primary-hover focus:bg-lm-primary-focus dark:bg-dm-primary dark:hover:bg-dm-primary-hover dark:focus:bg-dm-primary-focus transition-colors"
-                      onClick={() => navigate(`/update-spot/${spot._id}`)}
-                    >
-                      Update
-                    </button>
-                    <button
-                      className="px-3 py-1 rounded text-white bg-lm-accent hover:bg-lm-accent-hover focus:bg-lm-accent-focus dark:bg-dm-accent dark:hover:bg-dm-accent-hover dark:focus:bg-dm-accent-focus transition-colors"
-                      onClick={() => handleDelete(spot._id)}
-                    >
-                      Delete
-                    </button>
+                  <td className="p-3 border border-lm-border dark:border-dm-border text-center">
+                    <div className="flex flex-wrap justify-center gap-2">
+                      <button
+                        className="px-3 py-1 text-sm md:text-base rounded text-white bg-lm-primary hover:bg-lm-primary-hover focus:bg-lm-primary-focus dark:bg-dm-primary dark:hover:bg-dm-primary-hover dark:focus:bg-dm-primary-focus transition-colors"
+                        onClick={() => navigate(`/update-spot/${spot._id}`)}
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="px-3 py-1 text-sm md:text-base rounded text-white bg-lm-accent hover:bg-lm-accent-hover focus:bg-lm-accent-focus dark:bg-dm-accent dark:hover:bg-dm-accent-hover dark:focus:bg-dm-accent-focus transition-colors"
+                        onClick={() => handleDelete(spot._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))
@@ -125,6 +128,47 @@ const MyListPage = () => {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="space-y-4 md:hidden">
+        {spots.length > 0 ? (
+          spots.map((spot) => (
+            <div
+              key={spot._id}
+              className="p-4 border border-lm-border dark:border-dm-border rounded-lg bg-lm-surface dark:bg-dm-surface shadow-sm"
+            >
+              <p className="font-semibold text-lg">{spot.touristsSpotName}</p>
+              <p className="text-sm text-lm-text-secondary dark:text-dm-text-secondary">
+                Country: {spot.countryName}
+              </p>
+              <p className="text-sm text-lm-text-secondary dark:text-dm-text-secondary">
+                Location: {spot.location}
+              </p>
+              <p className="text-sm text-lm-text-secondary dark:text-dm-text-secondary">
+                Best Season: {spot.seasonality}
+              </p>
+              <div className="mt-3 flex gap-2">
+                <button
+                  className="flex-1 px-3 py-1 rounded text-white bg-lm-primary hover:bg-lm-primary-hover focus:bg-lm-primary-focus dark:bg-dm-primary dark:hover:bg-dm-primary-hover dark:focus:bg-dm-primary-focus transition-colors"
+                  onClick={() => navigate(`/update-spot/${spot._id}`)}
+                >
+                  Update
+                </button>
+                <button
+                  className="flex-1 px-3 py-1 rounded text-white bg-lm-accent hover:bg-lm-accent-hover focus:bg-lm-accent-focus dark:bg-dm-accent dark:hover:bg-dm-accent-hover dark:focus:bg-dm-accent-focus transition-colors"
+                  onClick={() => handleDelete(spot._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-lm-text-secondary dark:text-dm-text-secondary">
+            No tourist spots found.
+          </p>
+        )}
       </div>
     </div>
   );

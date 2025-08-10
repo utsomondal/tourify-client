@@ -22,11 +22,13 @@ const TouristSpotCard = ({ touristSpot }) => {
   return (
     <div className="relative rounded-2xl overflow-hidden group transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:rotate-[0.5deg] bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-gray-800">
       {/* Image */}
-      <img
-        src={imageURL}
-        alt={touristsSpotName}
-        className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
-      />
+      <div className="w-full aspect-[16/9] overflow-hidden">
+        <img
+          src={imageURL}
+          alt={touristsSpotName}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
 
       {/* Glassmorphism Overlay */}
       <div
