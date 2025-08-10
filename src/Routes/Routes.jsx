@@ -9,6 +9,7 @@ import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import PrivateRoute from "../Private/PrivateRoute";
 import DetailsPage from "../Pages/DetailsPage";
+import UpdatePage from "../Pages/UpdatePage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,12 @@ const router = createBrowserRouter([
             <DetailsPage />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/update-spot/:id",
+        element: <UpdatePage />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/tourist-spot/${params.id}`),
       },
       {
         path: "/login",
