@@ -19,6 +19,9 @@ const AddTouristsSpotPage = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
+    data.totalVisitorsPerYear = Number(data.totalVisitorsPerYear);
+    data.averageCost = Number(data.averageCost);
+
     const res = await fetch("http://localhost:3000/add-tourist-spot", {
       method: "POST",
       headers: {
@@ -65,7 +68,7 @@ const AddTouristsSpotPage = () => {
                 type="url"
                 {...register("imageURL", { required: true })}
                 placeholder="Paste image URL"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
 
@@ -81,10 +84,9 @@ const AddTouristsSpotPage = () => {
               </label>
               <input
                 type="text"
-                id="touristsSpotName"
                 {...register("touristsSpotName", { required: true })}
                 placeholder="Name of the tourist spot"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
 
@@ -95,19 +97,21 @@ const AddTouristsSpotPage = () => {
                   <FiGlobe /> Country
                 </div>
               </label>
-              <select
-                id="countryName"
-                {...register("countryName", { required: true })}
-                className="w-full rounded-md border px-4 py-3"
-              >
-                <option value="">Select a country</option>
-                <option>France</option>
-                <option>England</option>
-                <option>Italy</option>
-                <option>Spain</option>
-                <option>Netherlands</option>
-                <option>Switzerland</option>
-              </select>
+
+              <label className="select w-full rounded-md border focus-within:outline-none">
+                <select
+                  className="bg-transparent focus:outline-none"
+                  {...register("countryName", { required: true })}
+                >
+                  <option value="">Select a country</option>
+                  <option>France</option>
+                  <option>England</option>
+                  <option>Italy</option>
+                  <option>Spain</option>
+                  <option>Netherlands</option>
+                  <option>Switzerland</option>
+                </select>
+              </label>
             </div>
 
             {/* Location */}
@@ -119,10 +123,9 @@ const AddTouristsSpotPage = () => {
               </label>
               <input
                 type="text"
-                id="location"
                 {...register("location", { required: true })}
                 placeholder="Exact location"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
 
@@ -137,12 +140,11 @@ const AddTouristsSpotPage = () => {
                 </div>
               </label>
               <textarea
-                id="shortDescription"
                 {...register("shortDescription", { required: true })}
                 rows={5}
+                className="textarea w-full rounded-md border px-4 py-3 focus:outline-none"
                 placeholder="Describe briefly"
-                className="w-full rounded-md border px-4 py-3 resize-none"
-              />
+              ></textarea>
             </div>
           </div>
 
@@ -161,7 +163,7 @@ const AddTouristsSpotPage = () => {
                 {...register("averageCost", { required: true })}
                 placeholder="e.g. 150"
                 min="0"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
 
@@ -172,17 +174,19 @@ const AddTouristsSpotPage = () => {
                   <FiCalendar /> Seasonality
                 </div>
               </label>
-              <select
-                id="seasonality"
-                {...register("seasonality", { required: true })}
-                className="w-full rounded-md border px-4 py-3"
-              >
-                <option value="">Select season</option>
-                <option>Summer</option>
-                <option>Winter</option>
-                <option>Spring</option>
-                <option>Autumn</option>
-              </select>
+              <label className="select w-full rounded-md border focus-within:outline-none">
+                <select
+                  id="seasonality"
+                  className="bg-transparent focus:outline-none"
+                  {...register("seasonality", { required: true })}
+                >
+                  <option value="">Select season</option>
+                  <option>Summer</option>
+                  <option>Winter</option>
+                  <option>Spring</option>
+                  <option>Autumn</option>
+                </select>
+              </label>
             </div>
 
             {/* Travel Time */}
@@ -197,7 +201,7 @@ const AddTouristsSpotPage = () => {
                 id="travelTime"
                 {...register("travelTime", { required: true })}
                 placeholder="e.g. 7 days"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
 
@@ -217,7 +221,7 @@ const AddTouristsSpotPage = () => {
                 {...register("totalVisitorsPerYear", { required: true })}
                 placeholder="e.g. 10000"
                 min="0"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
 
@@ -233,7 +237,7 @@ const AddTouristsSpotPage = () => {
                 id="userEmail"
                 {...register("userEmail", { required: true })}
                 placeholder="Your email"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
 
@@ -249,7 +253,7 @@ const AddTouristsSpotPage = () => {
                 id="userName"
                 {...register("userName", { required: true })}
                 placeholder="Your name"
-                className="w-full rounded-md border px-4 py-3"
+                className="input w-full rounded-md border px-4 py-3 focus:outline-none"
               />
             </div>
           </div>
@@ -260,9 +264,9 @@ const AddTouristsSpotPage = () => {
           <button
             onClick={handleSubmit(onSubmit, onError)}
             type="submit"
-            className="bg-lm-primary text-white font-bold px-16 py-4 rounded-lg shadow-md transition cursor-pointer"
+            className="bg-lm-primary text-white font-semibold rounded-lg transition duration-200 cursor-pointer px-16 py-3 active:scale-95"
           >
-            Add
+            Add Spot
           </button>
         </div>
       </form>
