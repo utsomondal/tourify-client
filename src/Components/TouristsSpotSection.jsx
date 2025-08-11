@@ -3,12 +3,12 @@ import TouristSpotCard from "./TouristSpotCard";
 import { useEffect } from "react";
 
 const TouristsSpotSection = () => {
-  const [touristSpot, setTouristSpot] = useState([]);
+  const [touristSpots, setTouristSpots] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/all-tourist-spots/top")
       .then((res) => res.json())
-      .then((data) => setTouristSpot(data));
+      .then((data) => setTouristSpots(data));
   }, []);
 
   return (
@@ -26,7 +26,7 @@ const TouristsSpotSection = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
         {/* <TouristSpotCard /> */}
-        {touristSpot.map((touristSpot) => (
+        {touristSpots.map((touristSpot) => (
           <TouristSpotCard key={touristSpot._id} touristSpot={touristSpot} />
         ))}
       </div>

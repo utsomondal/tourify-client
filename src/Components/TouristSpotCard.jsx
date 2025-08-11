@@ -31,14 +31,7 @@ const TouristSpotCard = ({ touristSpot }) => {
       </div>
 
       {/* Glassmorphism Overlay */}
-      <div
-        className="
-    absolute bottom-4 left-4 right-4 
-    rounded-xl p-4 border shadow-lg backdrop-blur-md
-    bg-white/80 text-gray-900 border-gray-300
-    dark:bg-black/30 dark:text-white dark:border-white/20
-  "
-      >
+      <div className=" absolute bottom-4 left-4 right-4 rounded-xl p-4 border shadow-lg backdrop-blur-md bg-white/80 text-gray-900 border-gray-300 dark:bg-black/30 dark:text-white dark:border-white/20">
         {/* Title */}
         <h2 className="text-lg font-semibold flex items-center gap-2">
           <LuMapPin className="text-gray-700 dark:text-white/70" />{" "}

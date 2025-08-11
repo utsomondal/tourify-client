@@ -1,4 +1,5 @@
 import Banner from "../Components/Banner";
+import CountriesSection from "../Components/CountriesSection";
 import TouristsSpotSection from "../Components/TouristsSpotSection";
 
 const HomePage = () => {
@@ -6,6 +7,7 @@ const HomePage = () => {
     <div>
       <Banner />
       <TouristsSpotSection />
+      <CountriesSection />
     </div>
   );
 };

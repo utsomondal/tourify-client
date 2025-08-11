@@ -10,6 +10,7 @@ import RegisterPage from "../Pages/RegisterPage";
 import PrivateRoute from "../Private/PrivateRoute";
 import DetailsPage from "../Pages/DetailsPage";
 import UpdatePage from "../Pages/UpdatePage";
+import SpotByCountryPage from "../Pages/SpotsByCountryPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             <DetailsPage />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/spot-by-country",
+        element: <SpotByCountryPage />,
       },
       {
         path: "/update-spot/:id",
