@@ -34,7 +34,7 @@ const UpdatePage = () => {
     formData.averageCost = Number(formData.averageCost);
 
     const res = await fetch(
-      `http://localhost:3000/update-tourist-spot/${currentSpotData._id}`,
+      `https://tourify-backend-nine.vercel.app/update-tourist-spot/${currentSpotData._id}`,
       {
         method: "PUT",
         headers: {

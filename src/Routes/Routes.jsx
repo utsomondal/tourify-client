@@ -25,7 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/all-tourists-spot",
         element: <AllTouristsSpotPage />,
-        loader: () => fetch("http://localhost:3000/all-tourist-spots"),
       },
       {
         path: "/add-tourists-spot",
@@ -59,7 +58,9 @@ const router = createBrowserRouter([
         path: "/update-spot/:id",
         element: <UpdatePage />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/tourist-spot/${params.id}`),
+          fetch(
+            `https://tourify-backend-nine.vercel.app/tourist-spot/${params.id}`
+          ),
       },
       {
         path: "/login",

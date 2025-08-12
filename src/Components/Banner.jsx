@@ -40,16 +40,10 @@ const Banner = () => {
               />
 
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/30 to-transparent z-10" />
 
               {/* Hero Content */}
-              <div
-                className="
-  absolute z-20 text-white max-w-[90%] space-y-3 px-2
-  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center
-  sm:left-24 sm:-translate-x-0 sm:text-left sm:max-w-md md:max-w-lg
-"
-              >
+              <div className="absolute z-20 text-white max-w-[90%] space-y-3 px-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center sm:left-24 sm:-translate-x-0 sm:text-left sm:max-w-md md:max-w-lg">
                 <p className="text-xs sm:text-sm uppercase tracking-widest text-gray-300">
                   Top Destination
                 </p>
@@ -59,8 +53,8 @@ const Banner = () => {
                 </h1>
                 <p className="text-sm sm:text-base text-gray-200 whitespace-nowrap">
                   Explore the culture, beauty, and{" "}
-                  <br className="block sm:hidden" />lifestyle of this
-                  breathtaking city.
+                  <br className="block sm:hidden" />
+                  lifestyle of this breathtaking city.
                 </p>
                 <Link
                   to="/all-tourists-spot"

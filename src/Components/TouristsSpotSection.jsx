@@ -4,11 +4,15 @@ import { useEffect } from "react";
 
 const TouristsSpotSection = () => {
   const [touristSpots, setTouristSpots] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/all-tourist-spots/top")
+    fetch("https://tourify-backend-nine.vercel.app/all-tourist-spots/top")
       .then((res) => res.json())
-      .then((data) => setTouristSpots(data));
+      .then((data) => {
+        setTouristSpots(data);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -24,12 +28,18 @@ const TouristsSpotSection = () => {
           Discover stunning destinations handpicked for travelers like you.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
-        {/* <TouristSpotCard /> */}
-        {touristSpots.map((touristSpot) => (
-          <TouristSpotCard key={touristSpot._id} touristSpot={touristSpot} />
-        ))}
-      </div>
+      {/* <TouristSpotCard /> */}
+      {loading ? (
+        <div className="flex items-center justify-center">
+          <span className="loading loading-dots loading-xl"></span>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
+          {touristSpots.map((touristSpot) => (
+            <TouristSpotCard key={touristSpot._id} touristSpot={touristSpot} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

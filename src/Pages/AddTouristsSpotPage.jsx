@@ -22,7 +22,7 @@ const AddTouristsSpotPage = () => {
     data.totalVisitorsPerYear = Number(data.totalVisitorsPerYear);
     data.averageCost = Number(data.averageCost);
 
-    const res = await fetch("http://localhost:3000/add-tourist-spot", {
+    const res = await fetch("https://tourify-backend-nine.vercel.app/add-tourist-spot", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
