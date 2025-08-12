@@ -68,10 +68,11 @@ Tourify-Client/
    ```bash
    npm run dev
    ```
-5. Open the app in your browser at `http://localhost:3000`.
+5. Open the app in your browser at `http://localhost:5173`.
 
 ## Deployment
-The project is deployed using **Firebase Hosting** for fast and secure delivery.
+The project is deployed using **Firebase Hosting** for fast and secure delivery.  
+**Live Website**: [https://tourify-c7618.web.app/](https://tourify-c7618.web.app/)
 
 ## How to Use
 - Browse tourist spots by country.
