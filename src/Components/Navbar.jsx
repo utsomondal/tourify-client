@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import Drawer from "./Drawer";
 import JoinButton from "./JoinButton";
 import UserCard from "./UserCard";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, loading } = useAuth();
@@ -27,11 +28,16 @@ const Navbar = () => {
   }, [isDark]);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-lm-background/50 dark:bg-dm-background/50 border-b border-b-lm-border dark:border-b-dm-border container mx-auto">
+     <header className="sticky top-0 z-50 backdrop-blur-md bg-lm-background/50 dark:bg-dm-background/50 border-b border-b-lm-border dark:border-b-dm-border container mx-auto">
       <div className="navbar">
         <div className="navbar-start">
           {/* drawer */}
-          <label htmlFor="my-drawer" className="btn btn-ghost lg:hidden p-1">
+          <label
+            htmlFor="my-drawer"
+            className="btn btn-ghost lg:hidden p-1"
+            data-tooltip-id="tooltip-menu"
+            data-tooltip-content="Open menu"
+          >
             <RiMenuLine size={24} />
           </label>
           <Logo isDark={isDark} />
@@ -51,7 +57,11 @@ const Navbar = () => {
           )}
 
           {/* Theme Controller */}
-          <div className="pl-2">
+          <div
+            className="pl-2"
+            data-tooltip-id="tooltip-theme-toggle"
+            data-tooltip-content="Toggle light/dark mode"
+          >
             <label className="toggle text-lm-text-primary dark:text-dm-text-primary">
               <input
                 data-fake-filler-ignore="true"
@@ -71,6 +81,15 @@ const Navbar = () => {
         </div>
       </div>
       <Drawer isDark={isDark} />
+
+      {/* Tooltips */}
+      <Tooltip id="tooltip-menu" place="bottom" type="dark" effect="solid" />
+      <Tooltip
+        id="tooltip-theme-toggle"
+        place="bottom"
+        type="dark"
+        effect="solid"
+      />
     </header>
   );
 };
